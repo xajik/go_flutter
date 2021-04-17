@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  # back-end api built with golang
+  golang:
+    build: 
+      context: golang
+      target: dev
+    volumes:
+      - ./golang:/root
+    ports:
+      - "5000:5000"
+    env_file: .env
+    depends_on:
+      - postgres
+
+  # front-end built with react
+  flutter:
+    build: 
+      context: flutter
+      target: dev
+    restart: always
+    volumes:
+      - ./flutter:/root
+    ports:
+      - "3000:3000"
+    command: >
+            sh -c "flutter pub get && flutter run -d web-server --web-port 3000 --web-hostname 0.0.0.0"
+
+  # postgres is our primary data store
+  postgres:
+    build: postgres
+    volumes:
+      - ./postgres/migrations:/docker-entrypoint-initdb.d/migrations
+
+  # nginx is used for ssl termination
+  nginx:
+    build: 
+      context: nginx
+      target: dev
+    ports:
+      - "443:443"
+    depends_on:
+      - flutter
+      - golang

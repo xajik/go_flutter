@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "db"
+		},
+		{
+			"path": "flutter"
+		},
+		{
+			"path": "golang"
+		},
+		{
+			"path": "nginx"
+		}
+	]
+}
