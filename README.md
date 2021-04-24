@@ -1,6 +1,6 @@
 <h1 align="center">  💻 Go Note 📝 </h1>
 
-# ⭐️ Flutter Web + Go BE + Postgres DB + NGINX + Docker 🚀
+# ⭐️ Flutter Web + Go BE + Postgres DB + NGINX + Docker🚀
 ## ⬇️ Project features: 
 * ➕ add notes; 
 * ➖ delete notes;
@@ -17,6 +17,7 @@
 * Docker-compose
 
 ## Run
+* Rename `.env.example` to `.env`, change parameters if you want or use as is
 * run in root folder: `docker-compose up -d`
 * visit `https://localhost`
 ## Nginx
